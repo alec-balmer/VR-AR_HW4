@@ -1,0 +1,32 @@
+<html>
+  <head>
+      <title>MindAR.js: Minimal example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <!-- MindAR related files, which need to be attached -->
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image-aframe.prod.js"></script>
+  </head>
+  <body>
+      <!-- adding MindAR component called "mindar-image" to the root level of our scen (i.e. a-scene)
+      "imageTargetSrc: URL.mind" - trained image marker file. It is required by MindAR.
+        vr-mode-ui="enabled: false" - means we do not want to show VR button at the bottom of our screen. It is a-frame's attribute
+      device-orientation-permission-ui="enabled: false" - means we are disabling device orientation permission dialog. It is a-frame's attribute 
+    -->
+
+    <!--To train image visit: https://hiukim.github.io/mind-ar-js-doc/tools/compile -->
+    <a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/examples/image-tracking/assets/card-example/card.mind;" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+      <!-- "look-controls" is A-Frame's component. Enabling it allows to use mouse to turn camera -->
+        <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      <!-- when there is is only one target index, i.e. "targetIndex: 0" it means that we are using only
+      one image marker.
+        <a-entity mindar-image-target="targetIndex: 0"></entity> 
+          is the same as 
+          <a-marker></a-marker> or <a-nft></a-nft> in AR.js
+        -->
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-plane color="blue" opaciy="0.5" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
